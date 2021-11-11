@@ -14,6 +14,14 @@ for coverage use
 ./env/bin/coverage html
 ```
 
+quality
+```
+./env/bin/black src # format
+./env/bin/mypy src  # check type
+./env/bin/pylama -v src  -l "pycodestyle,pydocstyle,pyflakes,mccabe,radon" # audit code
+./env/bin/bandit -r src # security issues
+```
+
 
 
 
