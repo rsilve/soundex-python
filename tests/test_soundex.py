@@ -70,10 +70,10 @@ class Test(TestCase):
         self.assertEqual(res, "H200")
 
     def test_remove_separated_by_vowels(self):
-        res = soundex.encode("rthd")
-        self.assertEqual(res, "R300")
-        res = soundex.encode("hcwq")
-        self.assertEqual(res, "H200")
+        res = soundex.encode("rtac")
+        self.assertEqual(res, "R320")
+        res = soundex.encode("hetc")
+        self.assertEqual(res, "H320")
 
     def test_truncate(self):
         res = soundex.encode("Ashcraft")
