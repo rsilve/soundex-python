@@ -1,3 +1,4 @@
+"""Soundex game."""
 import re
 
 PREVIOUS_MATCH = "\\g<1>"
@@ -5,11 +6,7 @@ EMPTY_CHAR = "0000"
 
 
 def encode(word: str) -> str:
-    """
-    encode the parameter with soundex algorithm
-    :param word:
-    :return: encoded string
-    """
+    """Encode the parameter with soundex algorithm."""
     if not word:
         return EMPTY_CHAR
     word = word.upper()
@@ -30,47 +27,27 @@ def encode(word: str) -> str:
 
 
 def truncate(word: str) -> str:
-    """
-    keep only the 4 first char
-    :param word:
-    :return: string truncated to 4 char
-    """
+    """Keep only the 4 first char."""
     return word[0:4]
 
 
 def remove_vowels(word: str) -> str:
-    """
-    remove vowels from the word (not if in first position)
-    :param word:
-    :return: the word without vowels
-    """
+    """Remove vowels from the word (not if in first position)."""
     return re.sub("(.)[AEIOU]", PREVIOUS_MATCH, word)
 
 
 def remove_h_w_y(word: str) -> str:
-    """
-    Remove the letters H W Y
-    :param word:
-    :return:
-    """
+    """Remove the letters H W Y."""
     return re.sub("(.)[HWY]", PREVIOUS_MATCH, word)
 
 
 def remove_adjacent_number(word: str) -> str:
-    """
-    keep only one number if two adjacent identical number
-    :param word:
-    :return: the word without indentical adjacent number
-    """
+    """Keep only one number if two adjacent identical number."""
     return re.sub("(\\d)\\1+", PREVIOUS_MATCH, word)
 
 
 def map_consonant_to_number(word: str) -> str:
-    """
-    replace letters by number
-    :param word:
-    :return: word transformed
-    """
+    """Replace letters by number."""
     word = re.sub(r"[BFPV]", "1", word)
     word = re.sub(r"[CGJKQSXZ]", "2", word)
     word = re.sub(r"[DT]", "3", word)
@@ -81,20 +58,12 @@ def map_consonant_to_number(word: str) -> str:
 
 
 def ignore_non_letter_char(word: str) -> str:
-    """
-    keep only letters
-    :param word:
-    :return: word with only letters
-    """
+    """Keep only letters."""
     return re.sub("[^A-Z]", "", word)
 
 
 def pads_zero(word: str) -> str:
-    """
-    Add zeros on the right to have at least 4 characters
-    :param word:
-    :return: zero padded word
-    """
+    """Add zeros on the right to have at least 4 characters."""
     diff = 4 - len(word)
     if diff > 0:
         return word.ljust(4, "0")
@@ -103,10 +72,6 @@ def pads_zero(word: str) -> str:
 
 
 def extract_first_char(word: str) -> str:
-    """
-    extract the first char of the word
-    :param word:
-    :return: the first char
-    """
+    """Extract the first char of the word."""
     head = word[0]
     return head
