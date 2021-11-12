@@ -78,19 +78,3 @@ class Test(TestCase):
     def test_truncate(self):
         res = soundex.encode("Ashcraft")
         self.assertEqual(res, 'A261')
-
-
-# #1 retain first letter and drop all a,e,i,o,u,y,h,w
-
-# #2 replace with digit after the first letter
-# b,f,p,v: 1
-# c,g,j,k,q,s,x,z: 2
-# d,t: 3
-# l: 4
-# m,n: 5
-# r: 6
-
-# #3 2 adjacent letter encode to the same letter -> single number
-# 2 letter with same number separated by h or w -> single number
-
-# #4 stop when 1 letter and three digit. Zero padded if needed
