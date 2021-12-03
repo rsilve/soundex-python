@@ -1,0 +1,4 @@
+tasks:
+  - init: |
+      python3 -mvenv env
+      pip install -r requirements.txt
